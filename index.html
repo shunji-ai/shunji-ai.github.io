@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インフォグラフィック：ミニマリスト・コレクション プロジェクト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .bg-primary { background-color: #004AAD; }
+        .text-primary { color: #004AAD; }
+        .bg-secondary { background-color: #0079FF; }
+        .text-secondary { color: #0079FF; }
+        .bg-accent { background-color: #B4D4FF; }
+        .text-accent { color: #B4D4FF; }
+        .flowchart-arrow {
+            position: relative;
+            color: #0079FF;
+        }
+        .flowchart-arrow::after {
+            content: '→';
+            position: absolute;
+            right: -24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-primary text-white p-8 text-center shadow-lg">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">ミニマリスト・コレクション</h1>
+        <p class="text-xl text-accent">コンセプトから12月のローンチまでの挑戦</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="vision" class="mb-12">
+            <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                <h2 class="text-3xl font-bold text-primary mb-4">6ヶ月の挑戦</h2>
+                <p class="max-w-3xl mx-auto text-lg">
+                    新しい「ミニマリスト・コレクション」を12月初旬に市場に投入するという目標を掲げ、私たちの挑戦が始まりました。しかし、この6ヶ月の道のりには、乗り越えるべき3つの大きな制約が存在します。このインフォグラフィックは、私たちがどのように課題に対処し、目標達成を目指すかを示しています。
+                </p>
+            </div>
+        </section>
+
+        <section id="timeline-overview" class="mb-12">
+             <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-primary mb-4 text-center">プロジェクトタイムライン全体像</h2>
+                <p class="text-center mb-6 text-gray-600">プロジェクトは6つの主要フェーズに分かれています。以下のガントチャートは、各フェーズの期間と相互関係を示しており、プロジェクト全体の流れを俯瞰することができます。</p>
+                <div class="chart-container h-96 md:h-[450px]">
+                    <canvas id="ganttChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="hurdles" class="mb-12">
+            <h2 class="text-3xl font-bold text-primary mb-6 text-center">障壁を乗り越える</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-secondary mb-3">デザイナーの不在</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">プロジェクト序盤の重要な1ヶ月間、リードデザイナーが休暇に入ります。この期間、デザインの最終決定はできませんが、チームはメーカー選定と基礎デザインの準備に集中し、遅延を最小限に抑えます。</p>
+                    <div class="bg-accent/20 p-4 rounded-lg text-center">
+                        <div class="text-2xl font-bold text-primary">🗓️ 6月16日 - 7月20日</div>
+                        <div class="text-sm text-gray-700">デザイン承認プロセス停止期間</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-secondary mb-3">新規メーカーの探索</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">コスト競争力を高めるため、新しい製造パートナーを探す必要があります。これはリスクであると同時に、品質と価格のバランスを最適化する機会でもあります。以下のプロセスで慎重に選定を進めます。</p>
+                     <div class="flex items-center justify-between text-center text-sm md:text-base">
+                        <div class="bg-accent/20 p-2 rounded-md flowchart-arrow">調査</div>
+                        <div class="bg-accent/20 p-2 rounded-md flowchart-arrow">交渉</div>
+                        <div class="bg-accent/20 p-2 rounded-md flowchart-arrow">選定</div>
+                        <div class="bg-secondary text-white p-2 rounded-md">契約</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col">
+                    <h3 class="text-xl font-bold text-secondary mb-3">生地の出荷遅延</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">世界的な物流の問題により、生地の出荷期間が通常2週間から6週間へと3倍に延びています。これはサンプル製作と量産の両方に影響を及ぼす最大のボトルネックです。</p>
+                    <div class="chart-container h-56 max-h-56">
+                        <canvas id="shippingDelayChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="critical-path" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
+                <h2 class="text-2xl font-bold text-primary mb-4 text-center">クリティカルパス：生地の調達</h2>
+                <p class="text-center mb-6 text-gray-600">生地の調達は、このプロジェクトの成否を分ける最も重要な要素です。サンプル用と量産用の2回にわたる発注は、それぞれ6週間のリードタイムを要します。下のグラフは、7月の発注から10月の生地到着までのタイムラインを示しており、いかにスケジュールがタイトであるかを表しています。</p>
+                <div class="chart-container h-80">
+                    <canvas id="fabricTimelineChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="countdown" class="mb-12">
+             <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-primary mb-6 text-center">発売までのカウントダウン</h2>
+                 <p class="text-center mb-6 text-gray-600">全ての課題を乗り越え、プロジェクトは最終段階へ。生産から物流、そしてローンチまで、緻密な計画で12月初旬の発売を確実にします。</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-accent/30">
+                            <tr>
+                                <th class="p-3 font-bold uppercase text-primary border-b border-gray-200">フェーズ</th>
+                                <th class="p-3 font-bold uppercase text-primary border-b border-gray-200">期間</th>
+                                <th class="p-3 font-bold uppercase text-primary border-b border-gray-200">主要タスク</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover:bg-gray-100">
+                                <td class="p-3 border-b border-gray-200">V. 生産と品質管理</td>
+                                <td class="p-3 border-b border-gray-200">10月中旬 - 11月中旬</td>
+                                <td class="p-3 border-b border-gray-200">量産開始、厳密な品質チェック</td>
+                            </tr>
+                            <tr class="hover:bg-gray-100">
+                                <td class="p-3 border-b border-gray-200">VI. 物流とローンチ</td>
+                                <td class="p-3 border-b border-gray-200">11月中旬 - 12月上旬</td>
+                                <td class="p-3 border-b border-gray-200">完成品の配送、マーケティング実行</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-primary text-white text-center p-4 mt-8">
+        <p>&copy; 2025 ミニマリスト・コレクション プロジェクト. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const brilliantBlues = {
+            primary: '#004AAD',
+            secondary: '#0079FF',
+            accent: '#B4D4FF',
+            text: '#333333'
+        };
+
+        const chartTooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const commonTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: chartTooltipTitleCallback
+                    },
+                    backgroundColor: '#333333',
+                    titleFont: { size: 14 },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    cornerRadius: 4,
+                    displayColors: false,
+                }
+            }
+        };
+
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (label.length <= maxLength) return label;
+            
+            const words = label.split('');
+            let lines = [];
+            let currentLine = '';
+            
+            for(let i = 0; i < words.length; i++){
+                if((currentLine + words[i]).length > maxLength/2 && lines.length === 0){
+                   lines.push(currentLine);
+                   currentLine = '';
+                }
+                currentLine += words[i];
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+
+        const ganttData = {
+            labels: [
+                wrapLabel('I. 初期計画とメーカー調査'),
+                wrapLabel('II. メーカー選定とデザイン深化'),
+                wrapLabel('III. サンプル製作と最終デザイン'),
+                wrapLabel('IV. 量産準備とマーケティング開始'),
+                wrapLabel('V. 生産と品質管理'),
+                wrapLabel('VI. 物流とローンチ')
+            ],
+            datasets: [{
+                label: '計画期間（月）',
+                data: [
+                    [0, 0.5], 
+                    [0.5, 2], 
+                    [2, 3.5],
+                    [3.5, 4.5],
+                    [4.5, 5.5],
+                    [5.5, 6]
+                ],
+                backgroundColor: [
+                    brilliantBlues.primary,
+                    brilliantBlues.secondary,
+                    brilliantBlues.primary,
+                    brilliantBlues.secondary,
+                    brilliantBlues.primary,
+                    brilliantBlues.secondary
+                ],
+                borderColor: brilliantBlues.accent,
+                borderWidth: 1,
+                barPercentage: 0.5,
+            }]
+        };
+
+        new Chart(document.getElementById('ganttChart'), {
+            type: 'bar',
+            data: ganttData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        min: 0,
+                        max: 6,
+                        title: { display: true, text: 'プロジェクト期間（月）' },
+                        grid: { color: '#e0e0e0' }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    ...commonTooltipOptions.plugins,
+                    legend: { display: false },
+                    title: { display: false }
+                }
+            }
+        });
+
+        const shippingDelayData = {
+            labels: ['通常の出荷期間', '今回の遅延期間'],
+            datasets: [{
+                data: [2, 4],
+                backgroundColor: [brilliantBlues.accent, brilliantBlues.primary],
+                hoverBackgroundColor: [brilliantBlues.accent, brilliantBlues.primary],
+                borderColor: '#ffffff',
+                borderWidth: 2,
+            }]
+        };
+
+        new Chart(document.getElementById('shippingDelayChart'), {
+            type: 'doughnut',
+            data: shippingDelayData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...commonTooltipOptions.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            boxWidth: 12
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: '出荷期間：合計6週間',
+                        position: 'top'
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        const fabricTimelineData = {
+            labels: ['7月中旬\n(サンプル発注)', '8月下旬\n(サンプル到着)', '9月上旬\n(量産生地発注)', '10月中旬\n(量産生地到着)'],
+            datasets: [{
+                label: '生地の調達プロセス',
+                data: [0, 1.5, 1.7, 3.2],
+                fill: false,
+                borderColor: brilliantBlues.secondary,
+                backgroundColor: brilliantBlues.secondary,
+                tension: 0.1,
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        };
+
+        new Chart(document.getElementById('fabricTimelineChart'), {
+            type: 'line',
+            data: fabricTimelineData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        display: false,
+                        min: -0.5,
+                        max: 4
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    ...commonTooltipOptions.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
